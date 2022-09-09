@@ -1,0 +1,71 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+// node structure for single linked list
+struct node
+{
+int data;
+struct node *ref;	
+};
+
+struct node *head;
+
+void endinsert();// insertion at begin
+void display();// shows how many elements in the list
+void search();
+void link();
+ 
+ void main()
+ {
+ 	endinsert();
+ 	endinsert();
+ 	endinsert();
+ 	search();
+ }
+ 
+ void endinsert()
+ {
+ 	struct node *ptr,*temp;
+ 	int e;
+ 	ptr=(struct node*)malloc(sizeof(struct node));
+ 	printf("enter the element\n");
+ 	scanf("%d",&e);
+ 	ptr->data=e;
+ 	ptr->ref=NULL;
+  temp=head;
+  if(head==NULL)
+  {
+  head=ptr;
+  printf("inserted\n");
+  } 
+  else
+ 	{
+ 		while(temp->ref!=NULL)
+ 		temp=temp->ref;
+ 		temp->ref=ptr;
+ 		printf("inserted\n");
+	 }
+ 
+}
+
+void search()
+{
+	struct node *temp;
+	int ele;
+	int flag=0;
+	printf("enter the ele to search\n");
+	scanf("%d",&ele);
+	temp=head;
+	while(temp!=NULL)
+	{
+		if(ele==temp->data)
+		{
+			printf("element is found\n");
+			flag=1;
+			break;
+		}
+		temp=temp->ref;
+	}
+	if(flag==0)
+	printf("element is not found\n");
+}
